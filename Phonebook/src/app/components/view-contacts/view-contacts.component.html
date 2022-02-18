@@ -1,0 +1,29 @@
+<h3 class="mt-5" style="text-align: center; margin-top:10px; margin-bottom:10px">Contact Details <button class="btn btn-danger" *ngIf="contactsAvailable" style="float: right;" (click)="deleteAllContacts()">Delete All</button></h3>
+<div class="container mt-5">
+    <div *ngIf="contactsAvailable">
+        <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>S.No</th>
+                <th>Contact Name</th>
+                <th>Contact Number</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let contact of contacts">
+                  <td>{{contact.id}}</td>
+                  <td>{{contact.contactName}}</td>
+                  <td>{{contact.contactNumber}}</td>
+                  <td>
+                    <button class="btn btn-success px-3 py-1 my-2 ml-3" (click)="updateContact(this.contact.id)">Edit</button>
+                    <button class="btn btn-danger px-3 py-1 my-2 mx-2" (click)="deleteContact(this.contact.id)">Delete </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+    </div>
+    <div *ngIf="!contactsAvailable">
+        <h5 class="text-center">No Contacts available</h5>
+    </div>
+</div>

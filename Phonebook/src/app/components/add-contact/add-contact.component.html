@@ -1,0 +1,47 @@
+<div class="container">
+    
+        <form [formGroup]="addNewContact">
+            <div class="row">
+                <div class="col-sm-3"></div>
+                <div class="col-sm-7 mt-5">
+                    <h3 style="text-align: center; margin-top:10px; margin-bottom:10px"><b>Add New Contact</b></h3>
+                    <div class="form-group mt-3">
+                        <label>
+                            Name
+                            <span class="mandatory"> *</span>
+                        </label>
+                        <input type="text"
+                                name="name"
+                                class="form-control"
+                                formControlName="contactName"
+                                autocomplete="off"
+                                [class.border-danger]="addNewContact.get('contactName').invalid && (addNewContact.get('contactName').dirty || addNewContact.get('contactName').touched || isFormSubmitted)"/>
+                            <div *ngFor="let validation of validationMessages.contactName">
+                                <small class="text-danger error" *ngIf="addNewContact.get('contactName').hasError(validation.type) && (addNewContact.get('contactName').dirty || addNewContact.get('contactName').touched || isFormSubmitted)">
+                                            {{validation.message}}
+                                </small>
+                            </div>
+                    </div>
+                    <div class="form-group mt-3">
+                        <label>
+                            Contact Number
+                            <span class="mandatory"> *</span>
+                        </label>
+                        <input type="number"
+                                name="phNumber"
+                                class="form-control"
+                                formControlName="contactNumber"
+                                autocomplete="off"
+                                [class.border-danger]="addNewContact.get('contactNumber').invalid && (addNewContact.get('contactNumber').dirty || addNewContact.get('contactNumber').touched || isFormSubmitted)"/>
+                            <div *ngFor="let validation of validationMessages.contactNumber">
+                                <small class="text-danger error" *ngIf="addNewContact.get('contactNumber').hasError(validation.type) && (addNewContact.get('contactNumber').dirty || addNewContact.get('contactNumber').touched || isFormSubmitted)">
+                                            {{validation.message}}
+                                </small>
+                            </div>
+                    </div>
+                    <button class="btn text-white my-2 mx-3 mt-3" (click)="resetForm()">Reset</button>
+                    <button class="btn text-white my-2 mx-3 mt-3" (click)="addNewContactData()">Add</button>
+                </div>
+            </div>
+        </form>
+</div>
